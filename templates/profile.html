@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user[3] }} {{ user[4] }}</h1>
+        <p>Username: {{ user[1] }}</p>
+        <p>First Name: {{ user[3] }}</p>
+        <p>Last Name: {{ user[4] }}</p>
+        <p>Email: {{ user[5] }}</p>
+        {% if user[6] %}
+        <p>Uploaded File: <a href="{{ url_for('uploaded_file', filename=user[6]) }}" download>Download</a></p>
+        <p>Word Count: {{ word_count }}</p>
+        {% else %}
+        <p>No file uploaded.</p>
+        {% endif %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
